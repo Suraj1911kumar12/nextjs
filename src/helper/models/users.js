@@ -4,10 +4,25 @@ const userSchema = new Schema({
     name: String,
     email: {
         type: String,
-        unique: true
+        unique: [true, 'Email Should be Unique'],
+        required: [true, 'Please provide email']
     },
-    password: String,
-    role: String,
+    password: {
+        type: String,
+        required: [true, 'Please provide password']
+    },
+    isVerified: {
+        type: Boolean,
+        default: false
+    },
+    isAdmin: {
+        type: Boolean,
+        default: false
+    },
+    forgotPasswordToken: String,
+    forgotPasswordTokenExpiry: Date,
+    verifyToken: String,
+    verifyTokenExpiry: Date
 })
 
 

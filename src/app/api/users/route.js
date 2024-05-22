@@ -7,7 +7,6 @@ connectDB();
 
 export async function GET() {
     let user = []
-
     try {
         user = await Users.find()
         return NextResponse.json(user)
@@ -18,16 +17,14 @@ export async function GET() {
         })
     }
 }
-
 export async function POST(req) {
 
-    const { name, email, password, role } = await req.json()
+    const { username, email, password } = await req.json()
 
     const users = new Users({
-        name: name,
+        username: username,
         email: email,
         password: password,
-        role: role
     })
 
     try {
